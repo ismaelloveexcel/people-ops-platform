@@ -1,0 +1,35 @@
+# ── Secrets & env files (never commit these) ──────────────────────────────
+.env
+.env.*
+!.env.example        # allow .env.example (no real values)
+**/.env
+**/.env.*
+!**/.env.example
+
+# ── Python / backend ──────────────────────────────────────────────────────
+__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+backend/venv/
+backend/.venv/
+*.egg-info/
+
+# ── Node / frontend ───────────────────────────────────────────────────────
+frontend/node_modules/
+frontend/dist/
+frontend/.cache/
+
+# ── Supabase local state ──────────────────────────────────────────────────
+supabase/.branches/
+supabase/.temp/
+
+# ── OS & editor ───────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# ── Git cruft ─────────────────────────────────────────────────────────────
+*.orig
