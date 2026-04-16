@@ -37,7 +37,7 @@ export default function BankDetailsUpdate() {
           <Building2 size={22} className="text-brand-green" /> Bank Details Update
         </h1>
         <p className="text-sm text-brand-muted mt-1">
-          Request a change to your salary payment bank details.
+          Request a change to your salary payment bank details. Your request will be reviewed in line with the company process.
         </p>
       </div>
 
@@ -45,7 +45,7 @@ export default function BankDetailsUpdate() {
         <AlertTriangle size={16} className="text-amber-600 mt-0.5 flex-shrink-0" />
         <div className="text-sm text-amber-800">
           <p className="font-medium">Verification required</p>
-          <p className="text-xs mt-0.5">Bank detail changes require manual verification before processing. This is not applied automatically.</p>
+          <p className="text-xs mt-0.5">Changes are subject to verification and will not be applied automatically.</p>
         </div>
       </div>
 

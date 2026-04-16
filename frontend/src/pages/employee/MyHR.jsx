@@ -55,9 +55,9 @@ export default function MyHR() {
         </div>
       </div>
 
-      {/* Leave entitlements — static per Workers' Rights Act */}
+      {/* Leave information — general guidance */}
       <div className="card">
-        <h2 className="section-title">Leave Entitlements (Workers' Rights Act)</h2>
+        <h2 className="section-title">Leave Information (General Guidance)</h2>
         <div className="grid grid-cols-2 gap-4">
           {[
             { label: "Annual Leave",    value: "20 days / year" },
@@ -72,7 +72,7 @@ export default function MyHR() {
           ))}
         </div>
         <p className="text-xs text-brand-muted mt-3">
-          * Sick leave certificate required after 3 consecutive days. Public holidays per official Mauritius calendar.
+          Leave information shown here is for guidance only. Final leave balance and approval remain subject to company records and HR review.
         </p>
       </div>
     </div>

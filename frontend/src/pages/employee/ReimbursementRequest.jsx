@@ -37,7 +37,7 @@ export default function ReimbursementRequest() {
           <Receipt size={22} className="text-brand-green" /> Reimbursement Request
         </h1>
         <p className="text-sm text-brand-muted mt-1">
-          Submit work-related expenses for reimbursement. Please attach a receipt.
+          Submit work-related expenses for reimbursement. Please attach a receipt. Your request will be reviewed in line with the company process.
         </p>
       </div>
 

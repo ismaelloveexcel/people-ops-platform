@@ -8,8 +8,8 @@ Employees use this portal to:
 - **Submit requests** (leave, document, reimbursement, bank details update)
 - **Track request status** (Submitted → Under Review → Processed)
 - **Submit suggestions** for workplace improvements
-- **Raise concerns** confidentially (goes directly to the Managing Director)
-- **View policies and FAQ** (leave entitlements, processes, etc.)
+- **Raise concerns** through an internal submission process
+- **View policies and FAQ** (leave information, processes, etc.)
 - **View their own profile** information
 
 ## What This Is NOT
@@ -61,8 +61,8 @@ This portal is **fully functional without any external system**:
 | Reimbursement | Submit work expenses with receipt |
 | Bank Details Update | Request a change to salary payment details |
 | Suggest Improvement | Submit constructive workplace suggestions |
-| Raise a Concern | Confidential form — goes directly to MD |
-| Policies & FAQ | Leave entitlements, processes, data privacy info |
+| Raise a Concern | Internal concern submission for management review |
+| Policies & FAQ | Leave information, processes, data privacy info |
 | My Profile | View your own employment information |
 
 ## Request Statuses
@@ -75,12 +75,12 @@ The portal uses three simple statuses visible to employees:
 | **Under Review** | Your request is being reviewed |
 | **Processed** | A decision has been made (approved or returned with feedback) |
 
-All decisions are made by people (line managers / MD), not automated systems.
+All decisions are made by people, not automated systems. Requests are reviewed in line with the company process.
 
 ## HR / Mauritius Compliance
 
-- Leave entitlements reference the **Workers' Rights Act 2019**
-- Leave requests are **captured, not auto-approved**
+- Leave information references the **Workers' Rights Act 2019** for general guidance only
+- Leave requests are **captured, not auto-approved** — final balance and approval subject to company records and HR review
 - No payroll or salary calculations are performed
 - No automatic entitlement logic is treated as final
 - No disciplinary or termination features in the portal

@@ -52,7 +52,7 @@ export default function Home() {
       <div className="bg-blue-50 border border-blue-200 rounded-lg px-4 py-3 text-sm text-brand-blue">
         <p className="font-medium">How it works</p>
         <p className="text-xs mt-1">
-          Submit a request → it gets reviewed by your manager → you can track the status here.
+          Submit a request → it gets reviewed in line with the company process → you can track the status here.
           All decisions are made by people, not automated systems.
         </p>
       </div>

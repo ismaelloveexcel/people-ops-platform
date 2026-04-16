@@ -41,7 +41,7 @@ export default function SubmitRequest() {
     <div className="max-w-lg space-y-6">
       <div>
         <h1 className="page-title">Submit a Request</h1>
-        <p className="text-sm text-brand-muted mt-1">Your request will be routed to your line manager for review.</p>
+        <p className="text-sm text-brand-muted mt-1">Your request will be reviewed in line with the company process.</p>
       </div>
 
       <form onSubmit={handleSubmit} className="card space-y-5">

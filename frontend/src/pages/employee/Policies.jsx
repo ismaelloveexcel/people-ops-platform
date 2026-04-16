@@ -3,14 +3,15 @@ import { BookOpen, ChevronDown, ChevronUp } from "lucide-react";
 
 const POLICIES = [
   {
-    title: "Leave Entitlements",
+    title: "Leave Information (General Guidance)",
     content: [
       "Annual Leave: 20 working days per year (Workers' Rights Act 2019)",
       "Sick Leave: 15 working days per year. A medical certificate is required after 3 consecutive days of absence.",
       "Maternity Leave: 14 weeks paid leave.",
       "Paternity Leave: 5 continuous working days paid leave.",
       "Public Holidays: As per the official Mauritius Government Gazette each year.",
-      "Leave requests are submitted through this portal and reviewed by your line manager.",
+      "Leave requests are submitted through this portal and reviewed in line with the company process.",
+      "Leave information shown here is for guidance only. Final leave balance and approval remain subject to company records and HR review.",
     ],
   },
   {
@@ -18,7 +19,7 @@ const POLICIES = [
     content: [
       "Go to the relevant request page (Leave, Document, Reimbursement, or Bank Details).",
       "Fill in the required details and submit.",
-      "Your request will be reviewed by your line manager.",
+      "Your request will be reviewed in line with the company process.",
       "You can track the status on the My Requests page.",
       "Statuses: Submitted → Under Review → Processed (approved or returned with feedback).",
     ],
@@ -28,33 +29,33 @@ const POLICIES = [
     content: [
       "Work-related expenses must be submitted with a receipt or proof of payment.",
       "Include a clear description of the expense and its business purpose.",
-      "Reimbursement requests are reviewed by your line manager.",
-      "Processing time depends on approval workflow — you will see the status update on this portal.",
+      "Reimbursement requests are reviewed in line with the company process.",
+      "Processing time may vary — you will see the status update on this portal.",
     ],
   },
   {
     title: "Bank Details Update",
     content: [
       "You can request a change to your salary payment bank details through this portal.",
-      "Changes require manual verification and are not applied automatically.",
+      "Changes are subject to verification and will not be applied automatically.",
       "Please provide your new bank name, branch, account number, and account holder name.",
-      "A supporting document (e.g. bank statement) may speed up verification.",
+      "A supporting document (e.g. bank statement) may help with the verification process.",
     ],
   },
   {
     title: "Raising a Concern",
     content: [
-      "If you have a workplace concern (harassment, discrimination, salary issue, workload, or manager conduct), use the Raise a Concern form.",
-      "Your concern goes directly to the Managing Director and is treated confidentially.",
-      "Your line manager cannot see grievance submissions.",
-      "The MD will review and respond to your concern.",
+      "If you have a workplace concern, you may use the Raise a Concern form to share it.",
+      "Submissions are directed to senior management for internal review and follow-up.",
+      "This is an internal process and is not a formal legal or grievance procedure.",
+      "Concerns will be handled appropriately within the company.",
     ],
   },
   {
     title: "Suggestions & Improvements",
     content: [
       "All employees are encouraged to suggest improvements to workplace processes.",
-      "Suggestions are reviewed by the MD on a monthly basis.",
+      "Suggestions are reviewed periodically by management.",
       "You can track the status of your suggestions on the Suggestions page.",
       "The focus is on constructive ideas that improve how we work together.",
     ],
@@ -65,7 +66,7 @@ const POLICIES = [
       "This portal stores only the information necessary for your requests and profile.",
       "You can view your own profile information on the My Profile page.",
       "Sensitive personal data (like NID) is stored securely and not displayed in full.",
-      "Only you, your line manager (for requests), and the MD have access to your submissions.",
+      "Access to your submissions is limited to authorised personnel as part of the company process.",
     ],
   },
 ];
@@ -106,7 +107,7 @@ export default function Policies() {
           <BookOpen size={22} className="text-brand-green" /> Policies & FAQ
         </h1>
         <p className="text-sm text-brand-muted mt-1">
-          Common policies, entitlements, and answers to frequently asked questions.
+          Common policies, information, and answers to frequently asked questions.
         </p>
       </div>
 
@@ -117,7 +118,7 @@ export default function Policies() {
       </div>
 
       <p className="text-xs text-brand-muted">
-        This information is provided as guidance. For specific questions about your entitlements, please speak with your line manager or the Managing Director.
+        This information is provided for general guidance only and does not constitute a legal or contractual commitment. For specific questions, please follow your company's internal process.
       </p>
     </div>
   );

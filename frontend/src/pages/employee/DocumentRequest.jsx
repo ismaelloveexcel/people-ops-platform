@@ -37,7 +37,7 @@ export default function DocumentRequest() {
           <FileText size={22} className="text-brand-green" /> Document Request
         </h1>
         <p className="text-sm text-brand-muted mt-1">
-          Request an employment letter, payslip copy, reference letter, or any other document.
+          Request an employment letter, payslip copy, reference letter, or any other document. Your request will be reviewed in line with the company process.
         </p>
       </div>
 

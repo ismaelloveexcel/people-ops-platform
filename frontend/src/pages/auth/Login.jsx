@@ -69,7 +69,7 @@ export default function Login() {
         </form>
 
         <p className="text-center text-xs text-gray-500 mt-6">
-          This is your employee portal. All decisions are made by your line manager.
+          This is your employee portal. All decisions are made through the company process.
         </p>
       </div>
     </div>

@@ -59,7 +59,7 @@ export default function MyProfile() {
       </div>
 
       <p className="text-xs text-brand-muted">
-        To update your personal details, please submit a request to your line manager or speak with the Managing Director.
+        To update your personal details, please submit a request through the portal or follow your company's internal process.
       </p>
     </div>
   );
