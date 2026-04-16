@@ -27,7 +27,7 @@ export default function SubmitRequest() {
       const req = await createRequest({ type, description, attachment_url: attachment || undefined });
       await submitRequest(req.id);
       toast.success(`Request ${req.ref_id} submitted successfully.`);
-      navigate("/portal/requests");
+      navigate("/portal/my-requests");
     } catch (err) {
       toast.error(err.response?.data?.detail || "Failed to submit request.");
     } finally {

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { listRequests, getRequestLogs } from "../../api";
-import { Clock, CheckCircle, XCircle, FileText, ChevronDown, ChevronUp, ClipboardList } from "lucide-react";
+import { Clock, FileText, ChevronDown, ChevronUp, ClipboardList } from "lucide-react";
 
 /* Simplified statuses for employee view: Submitted / Under Review / Processed */
 const STATUS_DISPLAY = {
@@ -13,11 +13,21 @@ const STATUS_DISPLAY = {
 };
 
 const STATUS_FILTER = [
-  { value: "",            label: "All statuses" },
-  { value: "submitted",   label: "Submitted" },
-  { value: "pending",     label: "Under Review" },
-  { value: "approved",    label: "Processed" },
+  { value: "",              label: "All statuses" },
+  { value: "submitted",     label: "Submitted" },
+  { value: "under_review",  label: "Under Review" },
+  { value: "processed",     label: "Processed" },
 ];
+
+/* Map internal statuses to portal status groups for client-side filtering */
+const PORTAL_STATUS_MAP = {
+  draft:     "submitted",
+  submitted: "submitted",
+  pending:   "under_review",
+  approved:  "processed",
+  rejected:  "processed",
+  completed: "processed",
+};
 
 const TYPE_LABEL = {
   leave: "Leave", document: "Document", reimbursement: "Reimbursement",
@@ -84,7 +94,13 @@ export default function MyRequests() {
   const [loading, setLoading]   = useState(true);
 
   useEffect(() => {
-    listRequests(filter ? { status: filter } : {}).then(setRequests).finally(() => setLoading(false));
+    listRequests({}).then((data) => {
+      if (filter) {
+        setRequests(data.filter((r) => PORTAL_STATUS_MAP[r.status] === filter));
+      } else {
+        setRequests(data);
+      }
+    }).finally(() => setLoading(false));
   }, [filter]);
 
   return (

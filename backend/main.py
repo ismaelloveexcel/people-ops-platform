@@ -58,7 +58,7 @@ app.include_router(suggestions.router,  prefix="/api/v1")
 # ── Health check ─────────────────────────────────────────────────────────────
 @app.get("/health", tags=["System"])
 async def health():
-    return {"status": "ok", "service": "employee-portal", "version": "2.0.0"}
+    return {"status": "ok", "service": "employee-portal", "version": app.version}
 
 
 # ── Root ─────────────────────────────────────────────────────────────────────

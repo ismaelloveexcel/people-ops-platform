@@ -54,7 +54,7 @@ export default function ReimbursementRequest() {
         </div>
 
         <div>
-          <label className="label">Receipt Link *</label>
+          <label className="label">Receipt Link (optional)</label>
           <input
             type="url"
             value={attachment}
