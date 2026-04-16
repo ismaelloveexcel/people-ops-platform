@@ -100,6 +100,8 @@ export default function MyRequests() {
       } else {
         setRequests(data);
       }
+    }).catch(() => {
+      setRequests([]);
     }).finally(() => setLoading(false));
   }, [filter]);
 
