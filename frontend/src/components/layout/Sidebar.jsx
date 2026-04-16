@@ -1,38 +1,28 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import {
-  MessageSquare, FileText, Send, Clock, AlertTriangle,
-  Lightbulb, CheckSquare, Users, Shield, UserCheck,
-  BarChart2, LogOut, ChevronRight, Building2,
+  Home, ClipboardList, Calendar, FileText, Receipt,
+  Building2, Lightbulb, BookOpen, User, LogOut, AlertTriangle,
 } from "lucide-react";
 
-const EMPLOYEE_NAV = [
-  { to: "/employee/chat",     icon: MessageSquare, label: "Ask AI" },
-  { to: "/employee/my-hr",    icon: FileText,      label: "My HR" },
-  { to: "/employee/request",  icon: Send,          label: "Submit Request" },
-  { to: "/employee/requests", icon: Clock,         label: "My Requests" },
-  { to: "/employee/concern",  icon: AlertTriangle, label: "Raise a Concern" },
-  { to: "/employee/suggest",  icon: Lightbulb,     label: "Suggest an Improvement" },
+const PORTAL_NAV = [
+  { to: "/portal",                 icon: Home,          label: "Home",              end: true },
+  { to: "/portal/my-requests",     icon: ClipboardList, label: "My Requests" },
+  { to: "/portal/leave-request",   icon: Calendar,      label: "Leave Request" },
+  { to: "/portal/document-request",icon: FileText,      label: "Document Request" },
+  { to: "/portal/reimbursement",   icon: Receipt,       label: "Reimbursement" },
+  { to: "/portal/bank-details",    icon: Building2,     label: "Bank Details Update" },
+  { to: "/portal/suggestions",     icon: Lightbulb,     label: "Suggest Improvement" },
+  { to: "/portal/raise-concern",   icon: AlertTriangle, label: "Raise a Concern" },
+  { to: "/portal/policies",        icon: BookOpen,      label: "Policies & FAQ" },
+  { to: "/portal/my-profile",      icon: User,          label: "My Profile" },
 ];
 
-const MANAGER_NAV = [
-  { to: "/manager/approvals",    icon: CheckSquare,   label: "Pending Approvals" },
-  { to: "/manager/team",         icon: Users,         label: "Team Requests" },
-  { to: "/manager/disciplinary", icon: Shield,        label: "Initiate Disciplinary" },
-];
-
-const MD_NAV = [
-  { to: "/md/grievances",    icon: AlertTriangle, label: "Grievances" },
-  { to: "/md/disciplinary",  icon: Shield,        label: "Disciplinary Cases" },
-  { to: "/md/acting-md",     icon: UserCheck,     label: "Acting MD" },
-  { to: "/md/requests",      icon: FileText,      label: "All Requests" },
-  { to: "/md/suggestions",   icon: BarChart2,     label: "Suggestions" },
-];
-
-function NavItem({ to, icon: Icon, label }) {
+function NavItem({ to, icon: Icon, label, end }) {
   return (
     <NavLink
       to={to}
+      end={end}
       className={({ isActive }) =>
         `flex items-center gap-3 px-3 py-2 rounded-md text-sm transition-colors ${
           isActive
@@ -48,21 +38,13 @@ function NavItem({ to, icon: Icon, label }) {
 }
 
 export default function Sidebar() {
-  const { user, isMD, isManager, logout } = useAuth();
+  const { user, logout } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = async () => {
     await logout();
     navigate("/login");
   };
-
-  const navItems = isMD ? MD_NAV : isManager ? MANAGER_NAV : EMPLOYEE_NAV;
-  const roleLabel = isMD ? "Managing Director" : isManager ? "Manager" : "Employee";
-  const roleBadgeClass = isMD
-    ? "badge badge-amber"
-    : isManager
-    ? "badge badge-blue"
-    : "badge badge-green";
 
   return (
     <aside className="w-60 min-h-screen bg-white border-r border-brand-border flex flex-col">
@@ -71,8 +53,8 @@ export default function Sidebar() {
         <div className="flex items-center gap-2">
           <Building2 size={20} className="text-brand-green" />
           <div>
-            <p className="text-sm font-bold text-brand-ink leading-none">People Ops</p>
-            <p className="text-xs text-brand-muted">Platform</p>
+            <p className="text-sm font-bold text-brand-ink leading-none">Employee Portal</p>
+            <p className="text-xs text-brand-muted">People Ops</p>
           </div>
         </div>
       </div>
@@ -80,12 +62,12 @@ export default function Sidebar() {
       {/* User info */}
       <div className="px-4 py-3 border-b border-brand-border">
         <p className="text-sm font-medium text-brand-ink truncate">{user?.name}</p>
-        <span className={roleBadgeClass}>{roleLabel}</span>
+        <span className="badge badge-green">Employee</span>
       </div>
 
       {/* Navigation */}
-      <nav className="flex-1 px-3 py-4 space-y-1">
-        {navItems.map((item) => (
+      <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
+        {PORTAL_NAV.map((item) => (
           <NavItem key={item.to} {...item} />
         ))}
       </nav>

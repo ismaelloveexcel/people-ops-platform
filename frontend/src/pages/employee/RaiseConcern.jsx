@@ -63,7 +63,7 @@ export default function RaiseConcern() {
         <Lock size={16} className="text-brand-blue mt-0.5 flex-shrink-0" />
         <div className="text-sm text-brand-blue">
           <p className="font-medium">Confidential — MD only</p>
-          <p className="text-xs mt-0.5">This submission bypasses AI and all managers. Only the MD (or Acting MD) can access grievances.</p>
+          <p className="text-xs mt-0.5">This submission bypasses all managers. Only the MD (or Acting MD) can access concerns.</p>
         </div>
       </div>
 

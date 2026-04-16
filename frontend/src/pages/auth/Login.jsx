@@ -13,10 +13,8 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const user = await login(email, password);
-      if (user.is_md_level)            navigate("/md");
-      else if (user.role === "manager") navigate("/manager");
-      else                              navigate("/employee");
+      await login(email, password);
+      navigate("/portal");
     } catch (err) {
       toast.error(err.response?.data?.detail || "Invalid email or password.");
     }
@@ -30,8 +28,8 @@ export default function Login() {
           <div className="flex items-center justify-center gap-2 mb-2">
             <Building2 size={28} className="text-brand-gold" />
           </div>
-          <h1 className="text-2xl font-bold text-white tracking-tight">People Ops Platform</h1>
-          <p className="text-sm text-gray-400 mt-1">Sign in to your account</p>
+          <h1 className="text-2xl font-bold text-white tracking-tight">Employee Portal</h1>
+          <p className="text-sm text-gray-400 mt-1">Sign in to access your portal</p>
         </div>
 
         {/* Card */}
@@ -71,7 +69,7 @@ export default function Login() {
         </form>
 
         <p className="text-center text-xs text-gray-500 mt-6">
-          People Support AI provides guidance only. All decisions are made by your line manager.
+          This is your employee portal. All decisions are made by your line manager.
         </p>
       </div>
     </div>
