@@ -38,8 +38,8 @@ export default function RaiseConcern() {
         <div className="card text-center py-10 space-y-4">
           <CheckCircle size={40} className="mx-auto text-brand-green" />
           <h2 className="text-lg font-bold text-brand-ink">Concern Submitted</h2>
-          <p className="text-sm text-brand-muted">Your concern <span className="font-mono font-medium text-brand-ink">{submitted.ref_id}</span> has been sent directly to the Managing Director.</p>
-          <p className="text-xs text-brand-muted">Your concern is handled in confidence. Managers cannot see this submission.</p>
+          <p className="text-sm text-brand-muted">Your concern <span className="font-mono font-medium text-brand-ink">{submitted.ref_id}</span> has been received and will be handled appropriately within the company.</p>
+          <p className="text-xs text-brand-muted">Submissions are directed to senior management for internal review.</p>
           <button onClick={() => setSubmitted(null)} className="btn-secondary">Submit another concern</button>
         </div>
       </div>
@@ -54,16 +54,16 @@ export default function RaiseConcern() {
           <AlertTriangle size={22} className="text-brand-red" /> Raise a Concern
         </h1>
         <p className="text-sm text-brand-muted mt-1">
-          This form goes directly to the Managing Director. Your manager cannot see it.
+          You may use this section to raise a concern or share something that requires attention. Submissions will be handled appropriately within the company.
         </p>
       </div>
 
-      {/* Confidentiality notice */}
+      {/* Internal handling notice */}
       <div className="bg-blue-50 border border-blue-200 rounded-lg px-4 py-3 flex items-start gap-3">
         <Lock size={16} className="text-brand-blue mt-0.5 flex-shrink-0" />
         <div className="text-sm text-brand-blue">
-          <p className="font-medium">Confidential — MD only</p>
-          <p className="text-xs mt-0.5">This submission bypasses AI and all managers. Only the MD (or Acting MD) can access grievances.</p>
+          <p className="font-medium">Internal handling</p>
+          <p className="text-xs mt-0.5">Concerns submitted here are directed to senior management for internal review and follow-up.</p>
         </div>
       </div>
 
@@ -89,7 +89,7 @@ export default function RaiseConcern() {
 
         <button type="submit" disabled={loading} className="btn-danger w-full flex items-center justify-center gap-2">
           <AlertTriangle size={16} />
-          {loading ? "Submitting…" : "Submit Concern to MD"}
+          {loading ? "Submitting…" : "Submit Concern"}
         </button>
       </form>
     </div>

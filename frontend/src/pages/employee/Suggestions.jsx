@@ -27,7 +27,7 @@ export default function Suggestions() {
     setLoading(true);
     try {
       await submitSuggestion({ title, description });
-      toast.success("Suggestion submitted! The MD reviews these monthly.");
+      toast.success("Suggestion submitted! It will be reviewed by management.");
       setTitle(""); setDesc(""); setJust((p) => !p);
     } catch (err) {
       toast.error(err.response?.data?.detail || "Failed to submit suggestion.");
@@ -40,7 +40,7 @@ export default function Suggestions() {
     <div className="space-y-6">
       <div>
         <h1 className="page-title flex items-center gap-2"><Lightbulb size={22} className="text-brand-gold" /> Suggest an Improvement</h1>
-        <p className="text-sm text-brand-muted mt-1">The MD reviews suggestions monthly and shares the Top 3 updates with the team.</p>
+        <p className="text-sm text-brand-muted mt-1">Suggestions are reviewed periodically by management. Selected updates may be shared with the team.</p>
       </div>
 
       <form onSubmit={handleSubmit} className="card space-y-4">

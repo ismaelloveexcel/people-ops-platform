@@ -1,31 +1,23 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import { AuthProvider } from "./context/AuthContext";
-import { RequireAuth, RoleRedirect, RequireRole } from "./components/ui/RoleGuard";
+import { RequireAuth } from "./components/ui/RoleGuard";
 import AppLayout from "./components/layout/AppLayout";
 
 // Auth
 import Login from "./pages/auth/Login";
 
-// Employee pages
-import AskAI          from "./pages/employee/AskAI";
-import MyHR           from "./pages/employee/MyHR";
-import SubmitRequest  from "./pages/employee/SubmitRequest";
-import MyRequests     from "./pages/employee/MyRequests";
-import RaiseConcern   from "./pages/employee/RaiseConcern";
-import Suggestions    from "./pages/employee/Suggestions";
-
-// Manager pages
-import PendingApprovals     from "./pages/manager/PendingApprovals";
-import TeamRequests         from "./pages/manager/TeamRequests";
-import InitiateDisciplinary from "./pages/manager/InitiateDisciplinary";
-
-// MD pages
-import Grievances        from "./pages/md/Grievances";
-import DisciplinaryCases from "./pages/md/DisciplinaryCases";
-import ActingMD          from "./pages/md/ActingMD";
-import AllRequests       from "./pages/md/AllRequests";
-import SuggestionsReview from "./pages/md/SuggestionsReview";
+// Employee portal pages
+import Home                 from "./pages/employee/Home";
+import MyRequests           from "./pages/employee/MyRequests";
+import LeaveRequest         from "./pages/employee/LeaveRequest";
+import DocumentRequest      from "./pages/employee/DocumentRequest";
+import ReimbursementRequest from "./pages/employee/ReimbursementRequest";
+import BankDetailsUpdate    from "./pages/employee/BankDetailsUpdate";
+import Suggestions          from "./pages/employee/Suggestions";
+import RaiseConcern         from "./pages/employee/RaiseConcern";
+import Policies             from "./pages/employee/Policies";
+import MyProfile            from "./pages/employee/MyProfile";
 
 export default function App() {
   return (
@@ -44,72 +36,32 @@ export default function App() {
           {/* Public */}
           <Route path="/login" element={<Login />} />
 
-          {/* Root redirect — auto-route based on role */}
+          {/* ── Employee Portal ── */}
           <Route
-            path="/"
-            element={
-              <RequireAuth>
-                <RoleRedirect />
-              </RequireAuth>
-            }
-          />
-
-          {/* ── EMPLOYEE ── */}
-          <Route
-            path="/employee"
+            path="/portal"
             element={
               <RequireAuth>
                 <AppLayout />
               </RequireAuth>
             }
           >
-            <Route index element={<Navigate to="ask-ai" replace />} />
-            <Route path="ask-ai"         element={<AskAI />} />
-            <Route path="my-hr"          element={<MyHR />} />
-            <Route path="submit-request" element={<SubmitRequest />} />
-            <Route path="my-requests"    element={<MyRequests />} />
-            <Route path="raise-concern"  element={<RaiseConcern />} />
-            <Route path="suggestions"    element={<Suggestions />} />
+            <Route index                  element={<Home />} />
+            <Route path="my-requests"     element={<MyRequests />} />
+            <Route path="leave-request"   element={<LeaveRequest />} />
+            <Route path="document-request" element={<DocumentRequest />} />
+            <Route path="reimbursement"   element={<ReimbursementRequest />} />
+            <Route path="bank-details"    element={<BankDetailsUpdate />} />
+            <Route path="suggestions"     element={<Suggestions />} />
+            <Route path="raise-concern"   element={<RaiseConcern />} />
+            <Route path="policies"        element={<Policies />} />
+            <Route path="my-profile"      element={<MyProfile />} />
           </Route>
 
-          {/* ── MANAGER ── */}
-          <Route
-            path="/manager"
-            element={
-              <RequireAuth>
-                <RequireRole roles={["manager", "md", "acting_md"]}>
-                  <AppLayout />
-                </RequireRole>
-              </RequireAuth>
-            }
-          >
-            <Route index element={<Navigate to="pending" replace />} />
-            <Route path="pending"      element={<PendingApprovals />} />
-            <Route path="team"         element={<TeamRequests />} />
-            <Route path="disciplinary" element={<InitiateDisciplinary />} />
-          </Route>
-
-          {/* ── MD ── */}
-          <Route
-            path="/md"
-            element={
-              <RequireAuth>
-                <RequireRole roles={["md", "acting_md"]}>
-                  <AppLayout />
-                </RequireRole>
-              </RequireAuth>
-            }
-          >
-            <Route index element={<Navigate to="requests" replace />} />
-            <Route path="requests"           element={<AllRequests />} />
-            <Route path="grievances"         element={<Grievances />} />
-            <Route path="disciplinary"       element={<DisciplinaryCases />} />
-            <Route path="acting-md"          element={<ActingMD />} />
-            <Route path="suggestions-review" element={<SuggestionsReview />} />
-          </Route>
+          {/* Root → portal */}
+          <Route path="/" element={<Navigate to="/portal" replace />} />
 
           {/* Fallback */}
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="*" element={<Navigate to="/portal" replace />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>

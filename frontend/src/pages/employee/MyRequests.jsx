@@ -1,14 +1,32 @@
 import { useEffect, useState } from "react";
 import { listRequests, getRequestLogs } from "../../api";
-import { Clock, CheckCircle, XCircle, FileText, ChevronDown, ChevronUp } from "lucide-react";
+import { Clock, FileText, ChevronDown, ChevronUp, ClipboardList } from "lucide-react";
 
-const STATUS_CONFIG = {
-  draft:     { label: "Draft",     cls: "badge-gray"  },
-  submitted: { label: "Submitted", cls: "badge-blue"  },
-  pending:   { label: "Pending",   cls: "badge-amber" },
-  approved:  { label: "Approved",  cls: "badge-green" },
-  rejected:  { label: "Rejected",  cls: "badge-red"   },
-  completed: { label: "Completed", cls: "badge-green" },
+/* Simplified statuses for employee view: Submitted / Under Review / Processed */
+const STATUS_DISPLAY = {
+  draft:     { label: "Submitted",    cls: "badge-blue"  },
+  submitted: { label: "Submitted",    cls: "badge-blue"  },
+  pending:   { label: "Under Review", cls: "badge-amber" },
+  approved:  { label: "Processed",    cls: "badge-green" },
+  rejected:  { label: "Processed",    cls: "badge-red"   },
+  completed: { label: "Processed",    cls: "badge-green" },
+};
+
+const STATUS_FILTER = [
+  { value: "",              label: "All statuses" },
+  { value: "submitted",     label: "Submitted" },
+  { value: "under_review",  label: "Under Review" },
+  { value: "processed",     label: "Processed" },
+];
+
+/* Map internal statuses to portal status groups for client-side filtering */
+const PORTAL_STATUS_MAP = {
+  draft:     "submitted",
+  submitted: "submitted",
+  pending:   "under_review",
+  approved:  "processed",
+  rejected:  "processed",
+  completed: "processed",
 };
 
 const TYPE_LABEL = {
@@ -19,7 +37,7 @@ const TYPE_LABEL = {
 function RequestRow({ req }) {
   const [expanded, setExpanded] = useState(false);
   const [logs, setLogs]         = useState(null);
-  const cfg = STATUS_CONFIG[req.status] || { label: req.status, cls: "badge-gray" };
+  const cfg = STATUS_DISPLAY[req.status] || { label: req.status, cls: "badge-gray" };
 
   const loadLogs = async () => {
     if (!logs) setLogs(await getRequestLogs(req.id));
@@ -76,19 +94,28 @@ export default function MyRequests() {
   const [loading, setLoading]   = useState(true);
 
   useEffect(() => {
-    listRequests(filter ? { status: filter } : {}).then(setRequests).finally(() => setLoading(false));
+    listRequests({}).then((data) => {
+      if (filter) {
+        setRequests(data.filter((r) => PORTAL_STATUS_MAP[r.status] === filter));
+      } else {
+        setRequests(data);
+      }
+    }).catch(() => {
+      setRequests([]);
+    }).finally(() => setLoading(false));
   }, [filter]);
 
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="page-title">My Requests</h1>
+          <h1 className="page-title flex items-center gap-2">
+            <ClipboardList size={22} className="text-brand-green" /> My Requests
+          </h1>
           <p className="text-sm text-brand-muted mt-1">Track the status of all your submitted requests</p>
         </div>
         <select value={filter} onChange={(e) => setFilter(e.target.value)} className="input w-40">
-          <option value="">All statuses</option>
-          {Object.entries(STATUS_CONFIG).map(([k, v]) => <option key={k} value={k}>{v.label}</option>)}
+          {STATUS_FILTER.map((s) => <option key={s.value} value={s.value}>{s.label}</option>)}
         </select>
       </div>
 

@@ -10,8 +10,8 @@ class Settings(BaseSettings):
     supabase_service_role_key: str
     supabase_jwt_secret: str
 
-    # Anthropic
-    anthropic_api_key: str
+    # Anthropic (optional — not used by employee portal)
+    anthropic_api_key: str = ""
     claude_model: str = "claude-sonnet-4-6"
 
     # App
